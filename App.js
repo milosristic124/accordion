@@ -28,9 +28,9 @@ export default class App extends Component<Props> {
     return (
       <View style={{ flex:1, backgroundColor: 'transparent' }}>
          <StatusBar
-     backgroundColor="blue"
-     barStyle="light-content"
-   />
+          backgroundColor="blue"
+          barStyle="light-content"
+        />
         <View>
           <Image source={require('./src/assets/background.png')} style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} />
         </View>
