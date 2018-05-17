@@ -22,7 +22,6 @@ module.exports = StyleSheet.create({
     },
     categoryContainer: {
         flex: 1,
-        position: 'absolute',
         top: 30,
         paddingLeft: 20,
         paddingTop: 30,
