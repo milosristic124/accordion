@@ -1,0 +1,93 @@
+{
+  "flights": [
+    {
+      "passengers": [],
+      "summary": {
+        "categorySummaries": [
+          {
+            "category": "BUSINESS",
+            "total": 44,
+            "allocated": 14,
+            "infants": 2,
+            "children": 1,
+            "summaryGroups": [
+              {
+                "label": "SPECIAL_MEALS",
+                "count": 5,
+                "subgroups": [
+                  {
+                    "label": "AVML",
+                    "count": 3
+                  },
+                  {
+                    "label": "LSML",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "label": "DEPORTEE",
+                "count": 2,
+                "subgroups": [
+                  {
+                    "label": "DEPA",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "label": "LANG",
+                "count": 1
+              },
+              {
+                "label": "LOWR",
+                "count": 1
+              }
+            ]
+          },
+          {
+            "category": "BUSINESS",
+            "total": 44,
+            "allocated": 14,
+            "infants": 2,
+            "children": 1,
+            "summaryGroups": [
+              {
+                "label": "SPECIAL_MEALS",
+                "count": 5,
+                "subgroups": [
+                  {
+                    "label": "AVML",
+                    "count": 3
+                  },
+                  {
+                    "label": "LSML",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "label": "DEPORTEE",
+                "count": 2,
+                "subgroups": [
+                  {
+                    "label": "DEPA",
+                    "count": 2
+                  }
+                ]
+              },
+              {
+                "label": "LANG",
+                "count": 1
+              },
+              {
+                "label": "LOWR",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

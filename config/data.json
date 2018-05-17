@@ -1,0 +1,138 @@
+{
+  "flights": [
+    {
+      "passengers": [],
+      "summary": {
+        "categorySummaries": [
+          {
+            "category": "Business Premier",
+            "total": 44,
+            "allocated": 14,
+            "summaryGroups": [
+              {
+                "label": "Catering",
+                "count": 14,
+                "subgroups": [
+                  {
+                    "label": "Gluten-free",
+                    "count": 10
+                  },
+                  {
+                    "label": "Vegetarian",
+                    "count": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "category": "Premium Economy",
+            "total": 44,
+            "allocated": 44,
+            "infants": 2,
+            "children": 1,
+            "summaryGroups": [
+              {
+                "label": "Catering",
+                "count": 43,
+                "subgroups": [
+                  {
+                    "label": "Gluten-free",
+                    "count": 4
+                  },
+                  {
+                    "label": "Vegetarian",
+                    "count": 9
+                  },
+                  {
+                    "label": "Regular",
+                    "count": 300
+                  }
+                ]
+              },
+              {
+                "label": "Elites",
+                "count": 4,
+                "subgroups": [
+                  {
+                    "label": "Elite1",
+                    "count": 1
+                  },
+                  {
+                    "label": "Elite2",
+                    "count": 1
+                  },
+                  {
+                    "label": "Elite3",
+                    "count": 1
+                  },
+                  {
+                    "label": "Elite4",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "label": "Priority One",
+                "count": 1
+              },
+              {
+                "label": "UMNR",
+                "count": 1
+              },
+              {
+                "label": "INF",
+                "count": 4,
+                "subgroups": [
+                  {
+                    "label": "INF1",
+                    "count": 1
+                  },
+                  {
+                    "label": "INF2",
+                    "count": 1
+                  },
+                  {
+                    "label": "INF3",
+                    "count": 1
+                  },
+                  {
+                    "label": "INF4",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "label": "MEDA",
+                "count": 1
+              }
+            ]
+          },
+          {
+            "category": "Economy",
+            "total": 255,
+            "allocated": 210,
+            "infants": 3,
+            "children": 10,
+            "summaryGroups": [
+              {
+                "label": "Catering",
+                "count": 210,
+                "subgroups": [
+                  {
+                    "label": "Gluten-free",
+                    "count": 100
+                  },
+                  {
+                    "label": "Vegetarian",
+                    "count": 110
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
