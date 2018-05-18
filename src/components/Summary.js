@@ -12,6 +12,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+import * as Animatable from 'react-native-animatable';
 import SubGroup from './SubGroup';
 import styles from '../styles/Accordion';
 const {width, height} = Dimensions.get('window');
@@ -38,6 +39,8 @@ class Summary extends Component {
             })
         }
         
+        this.subgroups.bounce(800);
+        this.summary.pulse(800);
         console.log('Pressed', this.state.isDropdownPressed);
     }
     renderItem() {
@@ -52,7 +55,12 @@ class Summary extends Component {
     render() {
         return (
             <View>
-                <View style={styles.summaryGroups} >
+                <Animatable.View 
+                    ref={(ref) => {
+                        this.summary = ref;
+                    }}
+                    style={styles.summaryGroups} 
+                >
                     <View style={styles.summaryGroupsLeft}>
                         <Text style={styles.summaryGroupsText}>{this.props.index.label}</Text>
                     </View>   
@@ -64,8 +72,14 @@ class Summary extends Component {
                             </TouchableOpacity>: 
                             <Image style={{ width: 16, height: 16 }}source={null}/>}
                     </View>
-                </View>
+                </Animatable.View>
+                <Animatable.View
+                    ref={(ref) => {
+                        this.subgroups = ref;
+                    }}
+                >
                 { this.state.isDropdownPressed ? this.renderItem() : null }                
+                </Animatable.View>
             </View>
         );
     }

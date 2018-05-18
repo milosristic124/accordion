@@ -12,6 +12,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+import * as Animatable from 'react-native-animatable';
 import Summary from './Summary';
 import styles from '../styles/Accordion';
 const {width, height} = Dimensions.get('window');
@@ -25,7 +26,7 @@ class Panel extends Component {
     }
     
     componentDidMount() {
-        
+        console.log('Num ber of Data', this.props.numberOfData);
     }
     dropdownPress() {
         if(this.state.isDropdownPressed){
@@ -37,7 +38,8 @@ class Panel extends Component {
                 isDropdownPressed: true,
             })
         }
-        
+        this.summary.pulse(800);
+        this.category.pulse(800);
         console.log('Pressed', this.state.isDropdownPressed);
     }
     renderItem() {
@@ -52,7 +54,11 @@ class Panel extends Component {
     render() {
         return (
             <View>
-                <View style={styles.category} >
+                <Animatable.View 
+                    ref={(ref) => {
+                        this.category = ref;
+                    }}
+                    style={styles.category}>
                     <View style={styles.categoryLeft}>
                         <Text style={styles.categoryText}>{this.props.index.category}</Text>
                     </View>   
@@ -63,8 +69,14 @@ class Panel extends Component {
                         </TouchableOpacity>
                     </View>
                     
-                </View>
+                </Animatable.View>
+                <Animatable.View 
+                    ref={(ref) => {
+                        this.summary = ref;
+                    }}
+                >
                 { this.state.isDropdownPressed ? this.renderItem() : null }
+                </Animatable.View>
             </View>
         );
     }
