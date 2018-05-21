@@ -32,14 +32,16 @@ class Summary extends Component {
         if(this.state.isDropdownPressed){
             this.setState({
                 isDropdownPressed: false,
+                animation: "fadeInUp"
             })
         } else {
             this.setState({
                 isDropdownPressed: true,
+                animation: "fadeInDown"
             })
         }
         
-        this.subgroups.bounce(800);
+        //this.subgroups.bounce(800);
         this.summary.pulse(800);
         console.log('Pressed', this.state.isDropdownPressed);
     }
@@ -74,9 +76,10 @@ class Summary extends Component {
                     </View>
                 </Animatable.View>
                 <Animatable.View
-                    ref={(ref) => {
-                        this.subgroups = ref;
-                    }}
+                    // ref={(ref) => {
+                    //     this.subgroups = ref;
+                    // }}
+                    animation={this.state.animation}
                 >
                 { this.state.isDropdownPressed ? this.renderItem() : null }                
                 </Animatable.View>

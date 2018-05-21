@@ -32,13 +32,15 @@ class Panel extends Component {
         if(this.state.isDropdownPressed){
             this.setState({
                 isDropdownPressed: false,
+                animation: "fadeInUp"
             })
         } else {
             this.setState({
                 isDropdownPressed: true,
+                animation: "fadeInDown"
             })
         }
-        this.summary.pulse(800);
+        //this.summary.pulse(800);
         this.category.pulse(800);
         console.log('Pressed', this.state.isDropdownPressed);
     }
@@ -58,6 +60,7 @@ class Panel extends Component {
                     ref={(ref) => {
                         this.category = ref;
                     }}
+               //     animation={this.state.animation}
                     style={styles.category}>
                     <View style={styles.categoryLeft}>
                         <Text style={styles.categoryText}>{this.props.index.category}</Text>
@@ -71,9 +74,10 @@ class Panel extends Component {
                     
                 </Animatable.View>
                 <Animatable.View 
-                    ref={(ref) => {
-                        this.summary = ref;
-                    }}
+                    // ref={(ref) => {
+                    //     this.summary = ref;
+                    // }}
+                    animation={this.state.animation}
                 >
                 { this.state.isDropdownPressed ? this.renderItem() : null }
                 </Animatable.View>
