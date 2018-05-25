@@ -59,10 +59,10 @@ module.exports = StyleSheet.create({
         paddingRight: 40,
     },
     summaryGroups: {
-        flex: 1,
+       // flex: 1,
         flexDirection: 'row',        
         justifyContent: 'space-between',
-        paddingTop: 10,
+       // paddingTop: 10,
         paddingBottom: 10,
     },
     summaryGroupsLeft: {

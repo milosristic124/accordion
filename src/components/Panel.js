@@ -9,7 +9,8 @@ import {
   KeyboardAvoidingView,
   Dimensions,
   AsyncStorage,
-  ActivityIndicator
+  ActivityIndicator,
+  Animated
 } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
@@ -22,6 +23,8 @@ class Panel extends Component {
         super(props);
         this.state = {
             isDropdownPressed: false,
+            expanded: true,
+            animation   : new Animated.Value()
         }
     }
     
@@ -29,20 +32,34 @@ class Panel extends Component {
         console.log('Num ber of Data', this.props.numberOfData);
     }
     dropdownPress() {
-        if(this.state.isDropdownPressed){
-            this.setState({
-                isDropdownPressed: false,
-                animation: "fadeInUp"
-            })
-        } else {
-            this.setState({
-                isDropdownPressed: true,
-                animation: "fadeInDown"
-            })
-        }
+        // if(this.state.isDropdownPressed){
+        //     this.setState({
+        //         isDropdownPressed: false,
+        //      //   animation: "fadeInUp"
+        //     })
+        // } else {
+        //     this.setState({
+        //         isDropdownPressed: true,
+        //     //    animation: "fadeInDown"
+        //     })
+        // }
         //this.summary.pulse(800);
-        this.category.pulse(800);
-        console.log('Pressed', this.state.isDropdownPressed);
+        //this.category.pulse(800);
+       // console.log('Pressed', this.state.isDropdownPressed);
+        let initialValue    = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
+        finalValue      = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
+
+    this.setState({
+        expanded : !this.state.expanded  //Step 2
+    });
+
+    this.state.animation.setValue(initialValue);  //Step 3
+    Animated.spring(     //Step 4
+        this.state.animation,
+        {
+            toValue: finalValue
+        }
+    ).start();  //Step 5
     }
     renderItem() {
         return this.props.index.summaryGroups.map(function(index, i){
@@ -53,14 +70,26 @@ class Panel extends Component {
           );
         });
     }
+    _setMaxHeight(event){
+        this.setState({
+            maxHeight   : event.nativeEvent.layout.height
+        });
+    }
+    
+    _setMinHeight(event){
+        this.setState({
+            minHeight   : event.nativeEvent.layout.height
+        });
+    }
+    
     render() {
         return (
-            <View>
-                <Animatable.View 
+            <Animated.View style={{  overflow:'hidden', height: this.state.animation}}>
+                <View 
+                onLayout={this._setMinHeight.bind(this)}
                     ref={(ref) => {
                         this.category = ref;
                     }}
-               //     animation={this.state.animation}
                     style={styles.category}>
                     <View style={styles.categoryLeft}>
                         <Text style={styles.categoryText}>{this.props.index.category}</Text>
@@ -68,20 +97,18 @@ class Panel extends Component {
                     <View style={styles.categoryRight}>
                         <Text style={styles.categoryText}>{this.props.index.total} / {this.props.index.allocated}</Text>
                         <TouchableOpacity onPress={ this.dropdownPress.bind(this) }>
-                            <Image style={styles.dropImage} source={ !this.state.isDropdownPressed ? require('../assets/dropdown.png') : require('../assets/dropdown-expanded.png')}/>
+                            <Image style={styles.dropImage} source={ !this.state.expanded ? require('../assets/dropdown.png') : require('../assets/dropdown-expanded.png')}/>
                         </TouchableOpacity>
                     </View>
                     
-                </Animatable.View>
-                <Animatable.View 
-                    // ref={(ref) => {
-                    //     this.summary = ref;
-                    // }}
-                    animation={this.state.animation}
+                </View>
+                <View 
+                    onLayout={this._setMaxHeight.bind(this)}
                 >
-                { this.state.isDropdownPressed ? this.renderItem() : null }
-                </Animatable.View>
-            </View>
+                {/* { this.state.isDropdownPressed ? this.renderItem() : null } */}
+                {this.renderItem()}
+                </View>
+            </Animated.View>
         );
     }
 }
