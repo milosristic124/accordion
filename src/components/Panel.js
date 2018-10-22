@@ -72,7 +72,7 @@ class Panel extends Component {
     }
     _setMaxHeight(event){
         this.setState({
-            maxHeight   : event.nativeEvent.layout.height
+            maxHeight   : event.nativeEvent.layout.height,
         });
     }
     
